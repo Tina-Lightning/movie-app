@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import './App.css';
 
@@ -10,35 +11,6 @@ class App extends Component {
   constructor() {
     super()
     this.state = {}
-
-    https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.state.searchTerm}
-
-    //console.log("this is my initializer")
-
-    // const movies = [
-    //   {
-    //     id: 0,
-    //     poster_src: "https://images-na.ssl-images-amazon.com/images/I/81ai6zx6eXL._AC_SL1304_.jpg",
-    //     title: "Avengers",
-    //     overview: "lorem ipsum"
-    //   },
-    //   {
-    //     id: 1,
-    //     poster_src: "https://images-na.ssl-images-amazon.com/images/I/A1t8xCe9jwL._AC_SY741_.jpg",
-    //     title: "Avengers: The Sequel",
-    //     overview: "lorem ipsum"
-    //   },
-    // ]
-
-    // const movieRows = [];
-
-    // movies.forEach((movie) => {
-    //   console.log(movie.title);
-    //   const movieRow = <MovieRow movie={movie} />
-    //   movieRows.push(movieRow)
-    // })
-
-    // this.state = { rows: movieRows }
 
     this.performSearch()
   }
