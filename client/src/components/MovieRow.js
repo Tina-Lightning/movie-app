@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
 class MovieRow extends Component {
+
   viewMovie() {
     console.log("ytying to view movie")
     console.log(this.props.movie.title)
     const url = "https://www.themoviedb.org/movie/" + this.props.movie.id;
     window.location.href = url;
   }
+  
     render() {
         return (
             <div key={this.props.movie.id} className="card flex-row flex-wrap movie-card">
