@@ -4,6 +4,7 @@ import axios from "axios";
 import NavBar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
 import MovieList from "./components/MovieList"; 
+import Pagination from "./components/Pagination";
 
 
 class App extends Component {
@@ -11,8 +12,10 @@ class App extends Component {
     super()
     this.state = {
       movies: [],
-      searchTerm: ""
-    }
+      searchTerm: "",
+      totalResults: 0,
+      currentPage: 1
+    } 
     this.apiKey = process.env.REACT_APP_API
   }
 
@@ -24,7 +27,8 @@ class App extends Component {
       .then(data => {
         console.log(data.data.results);
         this.setState({
-          movies: [...data.data.results]
+          movies: [...data.data.results],
+          totalResults: data.data.total_results
         })
       })
 
@@ -45,12 +49,25 @@ class App extends Component {
     this.setState({ searchTerm: e.target.value })
   }
 
+  nextPage = (pageNumber) => {
+    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.state.searchTerm}&page=${pageNumber}`)
+      .then(data => {
+        console.log(data.data.results);
+        this.setState({
+          movies: [...data.data.results],
+          currentPage: pageNumber
+        })
+      })
+  }
+
   render() {
+    const numberPages = Math.floor(this.state.totalResults / 20);
     return (
       <div>
         <NavBar />
         <SearchBar handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
         <MovieList movies={this.state.movies} /> 
+        { this.state.totalResults > 20 ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.currentPage} /> : "" }
       </div>
     );
   }
