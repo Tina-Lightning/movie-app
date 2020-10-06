@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
 import MovieList from "./components/MovieList"; 
 import Pagination from "./components/Pagination";
+import MovieInfo from "./components/MovieInfo";
 
 
 class App extends Component {
@@ -14,7 +15,8 @@ class App extends Component {
       movies: [],
       searchTerm: "",
       totalResults: 0,
-      currentPage: 1
+      currentPage: 1,
+      currentMovie: null
     } 
     this.apiKey = process.env.REACT_APP_API
   }
@@ -60,14 +62,28 @@ class App extends Component {
       })
   }
 
+  viewMovieInfo = (id) => {
+    const filteredMovie = this.state.movies.filter(movie => movie.id === id)
+
+    const newCurrentMovie = filteredMovie.length > 0 ? filteredMovie[0] : null
+
+    this.setState({ currentMovie: filteredMovie })
+  }
+
+  closeMovieInfo = () => {
+    this.setState({ currentMovie: null })
+  }
+
   render() {
     const numberPages = Math.floor(this.state.totalResults / 20);
     return (
       <div>
         <NavBar />
-        <SearchBar handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
-        <MovieList movies={this.state.movies} /> 
+
+        {this.state.currentMovie === null ? <div><SearchBar handleSubmit={this.handleSubmit} handleChange={this.handleChange} /><MovieList viewMovieInfo={this.viewMovieInfo} movies={this.state.movies} /> </div> : <MovieInfo closeMovieInfo={this.closeMovieInfo} />}
+
         { this.state.totalResults > 20 ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.currentPage} /> : "" }
+
       </div>
     );
   }
