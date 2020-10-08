@@ -67,7 +67,7 @@ class App extends Component {
 
     const newCurrentMovie = filteredMovie.length > 0 ? filteredMovie[0] : null
 
-    this.setState({ currentMovie: filteredMovie })
+    this.setState({ currentMovie: newCurrentMovie })
   }
 
   closeMovieInfo = () => {
@@ -80,9 +80,9 @@ class App extends Component {
       <div>
         <NavBar />
 
-        {this.state.currentMovie === null ? <div><SearchBar handleSubmit={this.handleSubmit} handleChange={this.handleChange} /><MovieList viewMovieInfo={this.viewMovieInfo} movies={this.state.movies} /> </div> : <MovieInfo closeMovieInfo={this.closeMovieInfo} />}
+        {this.state.currentMovie === null ? <div><SearchBar handleSubmit={this.handleSubmit} handleChange={this.handleChange} /><MovieList viewMovieInfo={this.viewMovieInfo} movies={this.state.movies} /> </div> : <MovieInfo currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo} />}
 
-        { this.state.totalResults > 20 ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.currentPage} /> : "" }
+        { this.state.totalResults > 2 && this.state.currentMovie === null ? <Pagination pages={numberPages} nextPage={this.nextPage} currentPage={this.currentPage} /> : "" }
 
       </div>
     );
