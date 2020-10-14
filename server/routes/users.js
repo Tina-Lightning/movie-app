@@ -1,7 +1,7 @@
 // we need the express router bc this is a route we are creating 
 const router = require("express").Router();
 // here we require the mongoose model 
-let User = require("../model/user.model");
+let User = require("../models/user.model");
 
 // this is our first route
 // this is the first endpoint that handles http GET requests
