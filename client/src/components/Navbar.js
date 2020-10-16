@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { Component } from "react";
+// this allows us to link the different routes
+import { Link } from "react-router-dom";
 
-const NavBar = () => {
-    return (
-        <nav>
-            <div className="nav-wrapper container">
-                <a href="/" className="brand-logo">Tina's TV Time!</a>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">JavaScript</a></li>
-                </ul>
-            </div>
-        </nav> 
-    )
+export default class NavBar extends Component {
+
+    render() {
+        return (
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <Link to="/" className="navbar-brand">Movie App</Link>
+                <div className="collapse navbar-collapse">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <Link to="/" className="nav-link">Movies</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/create" className="nav-link">Add Movie</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/user" className="nav-link">Create User</Link>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        );
+    }
+
 }
-
-export default NavBar;

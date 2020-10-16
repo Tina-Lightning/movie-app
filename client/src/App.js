@@ -8,14 +8,16 @@ import CreateMovie from "./components/create-movie";
 import CreateUser from "./components/create-user";
 
 function App() {
-  return(
+  return (
     <Router>
-      <NavBar />
-      <br/>
-      <Route path="/" exact component={MoviesList} />
-      <Route path="/edit/:id" component={EditMovie} />
-      <Route path="/create" component={CreateMovie} />
-      <Route path="/user" component={CreateUser} />
+      <div className="container">
+        <NavBar />
+        <br />
+        <Route path="/" exact component={MoviesList} />
+        <Route path="/edit/:id" component={EditMovie} />
+        <Route path="/create" component={CreateMovie} />
+        <Route path="/user" component={CreateUser} />
+      </div>
     </Router>
   );
 }
