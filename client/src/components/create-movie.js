@@ -29,7 +29,7 @@ export default class CreateMovie extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://local:5000/users/")
+        axios.get("http://localhost:5000/users/")
         .then(response => {
             if (response.data.length > 0) {
                 this.setState({
@@ -95,10 +95,18 @@ export default class CreateMovie extends Component {
         }
         console.log(movie);
 
-        axios.post("http://localhost:5000/movie/add", movie)
+        axios.post("http://localhost:5000/movies/add", movie)
         .then(res => console.log(res.data))
 
-        window.location = "/";
+        this.setState({
+            comments: "",
+            myRating: "",
+            title: "",
+            date: "",
+            userScore: 0,
+            overview: "",
+            image: "",
+        })
     }
 
 
