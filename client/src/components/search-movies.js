@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import axios from "axios";
 
-import NavBar from "./components/NavBar";
-import SearchBar from "./components/SearchBar";
-import MovieList from "./components/MovieList"; 
-import Pagination from "./components/Pagination";
-import MovieInfo from "./components/MovieInfo";
+import SearchBar from "./SearchBar";
+import MovieList from "./MovieList"; 
+import Pagination from "./Pagination";
+import MovieInfo from "./MovieInfo"
 
 
 class App extends Component {
@@ -67,7 +66,6 @@ class App extends Component {
     const numberPages = Math.floor(this.state.totalResults / 20);
     return (
       <div>
-        <NavBar />
 
         {this.state.currentMovie === null ? <div><SearchBar handleSubmit={this.handleSubmit} handleChange={this.handleChange} /><MovieList viewMovieInfo={this.viewMovieInfo} movies={this.state.movies} /> </div> : <MovieInfo currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo} />}
 

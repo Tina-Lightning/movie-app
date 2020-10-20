@@ -6,6 +6,7 @@ import MoviesList from "./components/movies-list";
 import EditMovie from "./components/edit-movie";
 import CreateMovie from "./components/create-movie";
 import CreateUser from "./components/create-user";
+import SearchMovies from "./components/search-movies";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/edit/:id" component={EditMovie} />
         <Route path="/create" component={CreateMovie} />
         <Route path="/user" component={CreateUser} />
+        <Route path="/search" component={SearchMovies} />
       </div>
     </Router>
   );
