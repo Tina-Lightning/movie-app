@@ -9,7 +9,7 @@ const MovieInfo = (props) => {
                 <span style={{ marginLeft: 10 }}>Go Back</span>
             </div>
             <div className="row">
-                <div className="col s12 m4">
+                <div className="movie-card">
                     {props.currentMovie.poster_path === null ? <img src="https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg" alt="movie poster" style={{ width: "100%", height: 360 }} /> : <img src={`http://image.tmdb.org/t/p/w185${props.currentMovie.poster_path}`} alt="movie poster" style={{ width: "100%", height: 360 }} />}
                 </div>
                 <div className="col s12 m8">

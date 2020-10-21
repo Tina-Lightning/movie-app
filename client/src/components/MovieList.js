@@ -6,8 +6,8 @@ const MovieList = (props) => {
     return (
         <div className="container">
             <div className="row">
-            <div className="d-flex">
-                    <div className="p-2 flex-fill">
+            <div className="d-flex flex-wrap justify-content-around">
+                    {/* <div className="p-2"> */}
                         {
                             props.movies.map((movie, i) => {
                                 return (
@@ -20,7 +20,7 @@ const MovieList = (props) => {
                                 )
                             })
                         }
-                    </div>
+                    {/* </div> */}
                 </div>
             </div>
         </div>
